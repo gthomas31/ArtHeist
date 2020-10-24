@@ -23,7 +23,7 @@ enemyImg = pygame.image.load('NinjaCharacter.png')
 enemyX = 400
 enemyY = 400
 enemyX_change = 0
-enemyY_change = 1
+enemyY_change = 0
 
 def player(x, y):
     screen.blit(playerImg, (x, y))
@@ -38,45 +38,47 @@ while running:
     # RGB (Red, Green, Blue)
     screen.fill((254, 254, 254))
     
+    playerX += playerX_change
+
+    # Boundaries for both characters
+    if playerX <= 0:
+        playerX = 0
+    elif playerX >= 1140:
+        playerX = 1140
+
+    if playerY <= 0:
+        playerY = 0
+    elif playerY >= 680:
+        playerY = 680 
+
+    if enemyX <= 0:
+        enemyX = 0
+    elif enemyX >= 1140:
+        enemyX = 1140
+
+    if enemyY <= 0:
+        enemyY = 0
+    elif enemyY >= 680:
+        playerY = 680
+
     player(playerX, playerY)
     enemy(enemyX, enemyY)
     pygame.display.update()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False  
+            running = False
                        
         # Checks keystroke for left or right
+        # pygame.mouse.set_pos(400, 400)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 playerX_change = -3
+                print("Left arrow")
             if event.key == pygame.K_RIGHT:
                 playerX_change = 3
-            playerX += playerX_change
+                print("Right arrow")
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
-            playerX += playerX_change
-
-        playerX += playerX_change
-
-        # Boundaries for both characters
-        if playerX <= 0:
-            playerX = 0
-        elif playerX >= 1140:
-            playerX = 1140
-
-        if playerY <= 0:
-            playerY = 0
-        elif playerY >= 680:
-            playerY = 680 
-
-        if enemyX <= 0:
-            enemyX = 0
-        elif enemyX >= 1140:
-            enemyX = 1140
-
-        if enemyY <= 0:
-            enemyY = 0
-        elif enemyY >= 680:
-            playerY = 680
+                print("Released")
