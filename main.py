@@ -42,7 +42,7 @@ while running:
     if enemyY <= 0:
         enemyY = 0
     elif enemyY >= 680:
-        playerY = 680
+        enemyY = 680
 
     # Enemy movement
     if enemyX == 1100:
@@ -52,7 +52,6 @@ while running:
 
     # Update entity locations
     enemy(enemyX, enemyY)
-    pygame.display.update()
 
     greenNinja.boundaries(screen)
 
