@@ -81,7 +81,7 @@ def activemenu(runningClass):
     play = False
     tutorial = False
     credit = False
-    practice = False
+    colorcust = False
     
      #run until closed
     
@@ -100,7 +100,7 @@ def activemenu(runningClass):
                 play = True
                 tutorial = False
                 credit = False
-                practice = False
+                colorcust = False
             
             #tutorial
             elif (340 < pointx < (240 + 340)) and (490 < pointy < (200 + 490)):
@@ -108,7 +108,7 @@ def activemenu(runningClass):
                 play = False
                 tutorial = True
                 credit = False
-                practice = False
+                colorcust = False
 
             #credits
             elif (800 < pointx < (800 + 200)) and (380 < pointy < (380 + 180)):
@@ -116,25 +116,24 @@ def activemenu(runningClass):
                 play = False
                 tutorial = False
                 credit = True
-                practice = False
+                colorcust = False
 
-            #practice
+            #colorcustomization
             elif (880 < pointx < (880 + 260)) and (125 < pointy < (125 + 180)):
-                print("practice makes perfect")
+                print("you want to customize")
                 play = False
                 tutorial = False
                 credit = False
-                practice = True
+                colorcust = True
     
     
-    return play, tutorial, credit, practice
+    return play, tutorial, credit, colorcust
 
 
 
 
 ()
 
-# activemenu()
      
 
 
