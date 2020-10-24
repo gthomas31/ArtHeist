@@ -30,7 +30,6 @@ def menulook():
     playrect.set_alpha(120)
     playrect.fill((255,255,255))
     win.blit(playrect, (235,210))
-    print(pygame.Surface.get_rect)
     #pygame.display.update()
 
     #tutoral rectangle ----------------------------------------------------------------------
@@ -68,10 +67,10 @@ def menulook():
 
 def clicked(click, rect):
 
-    p1 = rect.bottomleft
-    p2 = rect.topright
-
-    #return p1[0] < click[0] < p2[0] and p1[1] < click[1] < p2[2]
+    p1 = rect.topleft
+    p2 = rect.bottomright
+    #0=x, 1=y
+    return p1[1] > point[0] > p2[0] and p1[1] > point[1] > p2[2]
 
 () 
 
@@ -80,7 +79,8 @@ def activemenu():
 
     tab, prect, trect, crect, pracrect = menulook()
 
-    point = pygame.mouse.get_pos()
+    pointx, pointy = pygame.mouse.get_pos()
+    press = pygame.mouse.get_pressed()
     
      #run until closed
     running = True 
@@ -88,11 +88,30 @@ def activemenu():
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT: 
                 running = False
-            elif event.type == pygame.MOUSEBUTTONDOWN: 
-            #and clicked(point, prect):
+            #play button
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+    
+                pointx, pointy = pygame.mouse.get_pos()
+    
+                if  (235 < pointx < (235 + 230)) and (210 < pointy < (210+ 240)):
+                    print("you're playing!!")
+
+            #tutorial button
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                
+                pointx, pointy = pygame.mouse.get_pos()
+
+                if (340 < pointx < (240 + 340)) and (490 < pointy < (200 + 490)):
+                    print("time for tutorial!")
+
+            #credits button
+            #elif event.type == pygame.MOUSEBUTTONDOWN and p1[1] > point[0] > p2[0] and p1[1] > point[1] > p2[2]:
+                #print("ramiz did everything.")
             
-            #and clicked(mouse, prect):
-                print('ramiz')
+            #practice button
+            #elif even.type  == pygame.MOUSEBUTTONDOWN and p1[1] > point[0] > p2[0] and p1[1] > point[1] > p2[2]:
+                #print("practice makes perfect")
+               
 
 
 ()

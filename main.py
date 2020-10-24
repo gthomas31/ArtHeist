@@ -31,12 +31,18 @@ def player(x, y):
 def enemy(x, y):
     screen.blit(enemyImg, (x, y))
 
+
+
 # Game Loop
 running = True
 while running:
 
     # RGB (Red, Green, Blue)
     screen.fill((254, 254, 254))
+    
+    player(playerX, playerY)
+    enemy(enemyX, enemyY)
+    pygame.display.update()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -76,6 +82,3 @@ elif playerX >= 1140:
     elif enemyY >= 680:
         playerY = 680              
  
-player(playerX, playerY)
-# enemy(enemyX, enemyY)
-pygame.display.update()

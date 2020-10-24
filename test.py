@@ -15,7 +15,8 @@ print(pygame.Surface.get_bounding_rect(s))
 pygame.display.update()
 
 #print(x.bottomleft[0])
-
+x, y = pygame.mouse.get_pos()
+print(x)
     #run until closed
 running = True 
 while running: 
@@ -24,5 +25,8 @@ while running:
             running = False
 
 pygame.display.update()
+
+
+
 
 
