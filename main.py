@@ -22,7 +22,7 @@ playerY_change = 0
 enemyImg = pygame.image.load('NinjaCharacter.png')
 enemyX = 400
 enemyY = 400
-enemyX_change = 0
+enemyX_change = 0.5
 enemyY_change = 0
 
 def player(x, y):
@@ -39,6 +39,7 @@ while running:
     screen.fill((254, 254, 254))
     
     playerX += playerX_change
+    enemyX += enemyX_change
 
     # Boundaries for both characters
     if playerX <= 0:
@@ -51,16 +52,23 @@ while running:
     elif playerY >= 680:
         playerY = 680 
 
-    if enemyX <= 0:
-        enemyX = 0
-    elif enemyX >= 1140:
-        enemyX = 1140
+    if enemyX <= 700:
+        enemyX = 700
+    elif enemyX >= 1100:
+        enemyX = 1100
 
     if enemyY <= 0:
         enemyY = 0
     elif enemyY >= 680:
         playerY = 680
 
+    # Enemy movement
+    if enemyX == 1100:
+        enemyX_change = -0.5
+    if enemyX == 700:
+        enemyX_change = 0.5
+
+    # Update entity locations
     player(playerX, playerY)
     enemy(enemyX, enemyY)
     pygame.display.update()
@@ -73,10 +81,10 @@ while running:
         # pygame.mouse.set_pos(400, 400)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_change = -3
+                playerX_change = -2
                 print("Left arrow")
             if event.key == pygame.K_RIGHT:
-                playerX_change = 3
+                playerX_change = 2
                 print("Right arrow")
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
