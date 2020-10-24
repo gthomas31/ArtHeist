@@ -1,5 +1,4 @@
-import pygame
-#import menu
+import pygame, menu, instructions
 
 # Initialize pygame
 pygame.init()
@@ -12,7 +11,11 @@ pygame.display.set_caption("Art Heist")
 icon = pygame.image.load('AHLogo.png')
 pygame.display.set_icon(icon)
 
-#play_button, tutorial_button, credit_button, practice_button = activemenu()
+#play_button, tutorial_button, credit_button, practice_button = menu.activemenu()
+
+# Running class
+menuRunner = menu.Running()
+instructionRunner = menu.Running()
 
 # Player
 playerImg = pygame.image.load('GreenNinjaCharacter.png')
@@ -34,9 +37,27 @@ def player(x, y):
 def enemy(x, y):
     screen.blit(enemyImg, (x, y))
 
+play_button = False
+tutorial_button = False
+credit_button = False
+practice_button = False
+
 # Game Loop
-    running = True
-    while running:
+running = True
+while running:
+
+    if play_button == False and tutorial_button == False and credit_button == False and practice_button == False:
+        play_button, tutorial_button, credit_button, practice_button = menu.activemenu(menuRunner)
+        running = menuRunner.running
+
+    if instructionRunner.running == False: 
+        tutorial_button = False;
+       
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    if play_button == True:   
 
         # RGB (Red, Green, Blue)
         screen.fill((254, 254, 254))
@@ -75,21 +96,25 @@ def enemy(x, y):
         player(playerX, playerY)
         enemy(enemyX, enemyY)
         pygame.display.update()
+    
+    elif tutorial_button == True: 
+        instructions.Instructions(instructionRunner)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                        
+
+
+'''                        
             # Checks keystroke for left or right
             # pygame.mouse.set_pos(400, 400)
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    playerX_change = -2
-                    print("Left arrow")
-                if event.key == pygame.K_RIGHT:
-                    playerX_change = 2
-                    print("Right arrow")
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                playerX_change = -2
+                print("Left arrow")
+            if event.key == pygame.K_RIGHT:
+                playerX_change = 2
+                print("Right arrow")
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                    playerX_change = 0
-                    print("Released")
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                playerX_change = 0
+                print("Released") 
+'''
+        
