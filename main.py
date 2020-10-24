@@ -8,18 +8,28 @@ screen = pygame.display.set_mode((1200,800))
 
 # Caption and Icon
 pygame.display.set_caption("Art Heist")
-icon = pygame.image.load('')
+icon = pygame.image.load('AHLogo.png')
 pygame.display.set_icon(icon)
 
 # Player
-playerImg = pygame.image.load('')
+playerImg = pygame.image.load('GreenNinjaCharacter.png')
 playerX = 600
 playerY = 400
 playerX_change = 0
 playerY_change = 0
 
-def player():
+# Enemy
+enemyImg = pygame.image.load('NinjaCharacter.png')
+enemyX = 500
+enemyY = 400
+enemyX_change = 0
+enemyY_change = 0
+
+def player(x, y):
     screen.blit(playerImg, (playerX, playerY))
+
+def enemy():
+    screen.blit(enemyImg, (enemyX, enemyY))
 
 # Game Loop
 running = True
@@ -52,7 +62,20 @@ while running:
     if playerY <= 0:
         playerY = 0
     elif playerY >= 680:
-        playerY = 680          
+        playerY = 680
+
+    enemyX += enemyX_change  
+
+    if enemyX <= 0:
+        enemyX = 0
+    elif enemyX >= 1140:
+        enemyX = 1140
+
+    if enemyY <= 0:
+        enemyY = 0
+    elif enemyY >= 680:
+        playerY = 680              
          
     player(playerX, playerY)
+    enemy(enemyX, enemyY)
     pygame.display.update()
