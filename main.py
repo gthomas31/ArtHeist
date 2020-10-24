@@ -1,41 +1,26 @@
-import pygame, menu, instructions
+
+import pygame, menu, instructions, player, enemy
 
 # Initialize pygame
 pygame.init()
 
 # Create the screen
-screen = pygame.display.set_mode((1200,800))
+screen = pygame.display.set_mode((1200, 800))
 
 # Caption and Icon
 pygame.display.set_caption("Art Heist")
 icon = pygame.image.load('AHLogo.png')
 pygame.display.set_icon(icon)
 
+
+greenNinja = player.Player('GreenNinjaCharacter.png')
+enemyNinja = enemy.Enemy('NinjaCharacter.png')
+
 #play_button, tutorial_button, credit_button, practice_button = menu.activemenu()
 
 # Running class
 menuRunner = menu.Running()
 instructionRunner = menu.Running()
-
-# Player
-playerImg = pygame.image.load('GreenNinjaCharacter.png')
-playerX = 600
-playerY = 400
-playerX_change = 0
-playerY_change = 0
-
-# Enemy
-enemyImg = pygame.image.load('NinjaCharacter.png')
-enemyX = 400
-enemyY = 400
-enemyX_change = 0.5
-enemyY_change = 0
-
-def player(x, y):
-    screen.blit(playerImg, (x, y))
-
-def enemy(x, y):
-    screen.blit(enemyImg, (x, y))
 
 play_button = False
 tutorial_button = False
@@ -46,6 +31,11 @@ practice_button = False
 running = True
 while running:
 
+    # RGB (Red, Green, Blue)
+    screen.fill((254, 254, 254))
+
+    greenNinja.boundaries(screen)
+    enemyNinja.boundaries(screen)
     if play_button == False and tutorial_button == False and credit_button == False and practice_button == False:
         play_button, tutorial_button, credit_button, practice_button = menu.activemenu(menuRunner)
         running = menuRunner.running
@@ -58,6 +48,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+        greenNinja.movement(event)
+        enemyNinja.movement()
     if play_button == True:   
         # RGB (Red, Green, Blue)
         screen.fill((254, 254, 254))
