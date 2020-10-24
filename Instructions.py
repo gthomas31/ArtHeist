@@ -44,6 +44,10 @@ def Instructions():
     window.blit(Display2,(10, 380))
     pygame.display.update()
 
+    #Sets the background for the tutorial
+    background = pygame.image.load("InstructionsTest.png")
+    window.blit(background(0,0))
+
     #Makes sure that the window doesn't close without something happening
     running = True 
     while running:
