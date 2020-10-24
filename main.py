@@ -9,6 +9,8 @@ screen = pygame.display.set_mode((1200, 800))
 
 # Levels
 nightLevel = level.Level('NightScene.png', 733)
+platform1 = level.Platform(400, 650, 100, 25)
+nightLevel.addPlatform(platform1, screen)
 
 # Caption and Icon
 pygame.display.set_caption("Art Heist")
@@ -17,7 +19,7 @@ pygame.display.set_icon(icon)
 
 
 greenNinja = player.Player('GreenNinjaCharacter.png')
-enemyNinja = enemy.Enemy('NinjaCharacter.png', 400, nightLevel.groundLevel - 135)
+enemyNinja = enemy.Enemy('NinjaCharacter.png', 400, nightLevel.groundLevel - 135) 
 
 #play_button, tutorial_button, credit_button, practice_button = menu.activemenu()
 
@@ -57,7 +59,7 @@ while running:
         nightLevel.displayBackground(screen)
 
         #screen.fill((254, 254, 254))
-        greenNinja.boundaries(screen, nightLevel.groundLevel)
+        greenNinja.boundaries(screen, nightLevel)
         enemyNinja.boundaries(screen)
     
     elif tutorial_button == True: 
