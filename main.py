@@ -52,13 +52,13 @@ while running:
 
     if instructionRunner.running == False: 
         tutorial_button = False;
+        instructionRunner.running = True
        
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
     if play_button == True:   
-
         # RGB (Red, Green, Blue)
         screen.fill((254, 254, 254))
         
