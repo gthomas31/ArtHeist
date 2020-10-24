@@ -2,7 +2,7 @@ import pygame
 
 class Level:
     
-    self.platformList = []
+    platformList = []
 
     def __init__(self, imgFile):
         self.img = imgFile
@@ -14,8 +14,32 @@ class Level:
     def removePlatforms(self):
         self.platformList = []
 
-    def findGround(self):
-        
+    def findTop(self, index):
+        # x1, x2, y
+        x1 = self.platformList[index].xCord
+        y = self.platformList[index].yCord
+        x2 = x1 + self.platformList[index].xSize
+        return x1, x2, y
+    
+    def findBottom(self, index):
+        # x1, x2, y
+        x1, x2, y = self.findTop(index)
+        y += self.platformList[index].ySize
+        return x1, x2, y
+    
+    def findLeftSide(self, index):
+        # x, y1, y2
+        x = self.platformList[index].xCord
+        y1 = self.platformList[index].yCord
+        y2 = y1 + self.platformList[index].ySize
+        return x, y1, y2
+    
+    def findRightSide(self, index):
+        # x, y1, y2
+        x, y1, y2 = self.findLeftSide(index)
+        x += self.platformList[index].xSize
+        return x, y1, y2
+
 
 class Platform:
 
