@@ -63,43 +63,70 @@ def menulook():
 ()   
 
 
-def activemenu(): 
+class Running:
+
+    def __init__(self):
+        self.running = True
+
+    def changeRunning(self):
+        self.running = False
+
+def activemenu(runningClass):
 
     menulook()
 
     pointx, pointy = pygame.mouse.get_pos()
+
+    #initializing variables
+    play = False
+    tutorial = False
+    credit = False
+    practice = False
     
      #run until closed
-    running = True 
-    while running: 
-        for event in pygame.event.get(): 
-            if event.type == pygame.QUIT: 
-                running = False
-            #play button
-            elif event.type == pygame.MOUSEBUTTONDOWN:
     
-                pointx, pointy = pygame.mouse.get_pos()
-                
-                #play button
-                if  (235 < pointx < (235 + 230)) and (210 < pointy < (210+ 240)):
-                    print("you're playing!!")
-                    play = True
-                
-                #tutorial
-                if (340 < pointx < (240 + 340)) and (490 < pointy < (200 + 490)):
-                    print("time for tutorial!")
-                    tutorial = True
+    #while running: 
+    for event in pygame.event.get(): 
+        if event.type == pygame.QUIT: 
+            runningClass.changeRunning()
+        #play button
+        elif event.type == pygame.MOUSEBUTTONDOWN:
 
-                #credits
-                if (800 < pointx < (800 + 200)) and (380 < pointy < (380 + 180)):
-                    print("all miz")
-                    credit = True
+            pointx, pointy = pygame.mouse.get_pos()
+            
+            #play button
+            if  (235 < pointx < (235 + 230)) and (210 < pointy < (210+ 240)):
+                print("youre playing")
+                play = True
+                tutorial = False
+                credit = False
+                practice = False
+            
+            #tutorial
+            elif (340 < pointx < (240 + 340)) and (490 < pointy < (200 + 490)):
+                print("time for tutorial!")
+                play = False
+                tutorial = True
+                credit = False
+                practice = False
 
-                #practice
-                if (880 < pointx < (880 + 260)) and (125 < pointy < (125 + 180)):
-                    print("practice makes perfect")
-                    practice = True
+            #credits
+            elif (800 < pointx < (800 + 200)) and (380 < pointy < (380 + 180)):
+                print("all miz")
+                play = False
+                tutorial = False
+                credit = True
+                practice = False
 
+            #practice
+            elif (880 < pointx < (880 + 260)) and (125 < pointy < (125 + 180)):
+                print("practice makes perfect")
+                play = False
+                tutorial = False
+                credit = False
+                practice = True
+    
+    
     return play, tutorial, credit, practice
 
 
@@ -107,7 +134,7 @@ def activemenu():
 
 ()
 
-activemenu()
+# activemenu()
      
 
 
