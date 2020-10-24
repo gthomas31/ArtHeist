@@ -2,11 +2,20 @@ import pygame
 
 class Level:
     
+    self.platformList = []
+
     def __init__(self, imgFile):
         self.img = imgFile
 
     def addPlatform(self, platform, win):
         win.blit(platform.surface, (platform.xCord, platform.yCord))
+        self.platformList.append(platform)
+
+    def removePlatforms(self):
+        self.platformList = []
+
+    def findGround(self):
+        
 
 class Platform:
 
