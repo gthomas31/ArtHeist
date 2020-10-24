@@ -20,44 +20,44 @@ playerY_change = 0
 
 # Enemy
 enemyImg = pygame.image.load('NinjaCharacter.png')
-enemyX = 500
+enemyX = 400
 enemyY = 400
 enemyX_change = 0
 enemyY_change = 0
 
 def player(x, y):
-    screen.blit(playerImg, (playerX, playerY))
+    screen.blit(playerImg, (x, y))
 
-def enemy():
-    screen.blit(enemyImg, (enemyX, enemyY))
+def enemy(x, y):
+    screen.blit(enemyImg, (x, y))
 
 # Game Loop
 running = True
 while running:
 
     # RGB (Red, Green, Blue)
-    screen.fill((0, 0, 0))
+    screen.fill((254, 254, 254))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
+            
         # Checks keystroke for left or right
         if event.type == pygame.KEYDOWN:
-            if event.type == pygame.K_LEFT:
-                playerX_change = -0.2
-            if event.type == pygame.K_RIGHT:
-                playerX_change = 0.2
+            if event.key == pygame.K_LEFT:
+                playerX_change = -2
+            if event.key == pygame.K_RIGHT:
+                playerX_change = 2
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
 
-    playerX += playerX_change  
+    playerX += playerX_change 
 
-    if playerX <= 0:
+if playerX <= 0:
         playerX = 0
-    elif playerX >= 1140:
-        playerX = 1140
+elif playerX >= 1140:
+    playerX = 1140
 
     if playerY <= 0:
         playerY = 0
@@ -75,7 +75,7 @@ while running:
         enemyY = 0
     elif enemyY >= 680:
         playerY = 680              
-         
-    player(playerX, playerY)
-    enemy(enemyX, enemyY)
-    pygame.display.update()
+ 
+player(playerX, playerY)
+# enemy(enemyX, enemyY)
+pygame.display.update()
