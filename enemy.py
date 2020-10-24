@@ -18,22 +18,23 @@ class Enemy:
     def boundaries(self, screen):
         self.enemyX += self.enemyX_change
 
-        if enemyX <= 700:
-            enemyX = 700
-        elif enemyX >= 1100:
-            enemyX = 1100
+        if self.enemyX <= 700:
+            self.enemyX = 700
+        elif self.enemyX >= 1100:
+            self.enemyX = 1100
 
-        if enemyY <= 0:
-            enemyY = 0
-        elif enemyY >= 680:
-            enemyY = 680
+        if self.enemyY <= 0:
+            self.enemyY = 0
+        elif self.enemyY >= 680:
+            self.enemyY = 680
 
         self.enemy(self.enemyX, self.enemyY, screen)
         pygame.display.update()
 
     def movement(self):
+
         # Enemy movement
-        if enemyX == 1100:
-            enemyX_change = -0.5
-        if enemyX == 700:
-            enemyX_change = 0.5
+        if self.enemyX == 1100:
+            self.enemyX_change = -0.5
+        if self.enemyX == 700:
+            self.enemyX_change = 0.5

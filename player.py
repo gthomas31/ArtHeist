@@ -29,7 +29,7 @@ class Player:
             self.playerY = 680
 
         self.player(self.playerX, self.playerY, screen)
-        pygame.display.update()
+        # pygame.display.update()
 
     # Keystroke functions
     def movement(self, event):
