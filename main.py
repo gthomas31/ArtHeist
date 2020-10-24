@@ -7,6 +7,7 @@ pygame.init()
 # Create the screen
 screen = pygame.display.set_mode((1200, 800))
 
+
 # Caption and Icon
 pygame.display.set_caption("Art Heist")
 icon = pygame.image.load('AHLogo.png')
@@ -50,7 +51,10 @@ while running:
         
     if play_button == True:   
         # RGB (Red, Green, Blue)
-        screen.fill((254, 254, 254))
+        nightscene = pygame.image.load("NightScene.png")
+        screen.blit(nightscene, (0,0))
+
+        #screen.fill((254, 254, 254))
         greenNinja.boundaries(screen)
         enemyNinja.boundaries(screen)
     
