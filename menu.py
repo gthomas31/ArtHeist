@@ -12,7 +12,7 @@ def menulook():
     win = pygame.display.set_mode((1200, 800))
     pygame.display.set_caption("Art Heist")
     #INSERT WINDOW LOGO
-    icon = pygame.image.load('GreenNinjaCharacter.png')
+    icon = pygame.image.load('AHLogo.png')
     pygame.display.set_icon(icon)
 
      #add the menu image 
@@ -27,21 +27,21 @@ def menulook():
 
     #play rectangle ------------------------------------------------------------------------
     playrect = pygame.Surface((230, 240))
-    playrect.set_alpha(120)
+    playrect.set_alpha(0)
     playrect.fill((255,255,255))
     win.blit(playrect, (235,210))
     #pygame.display.update()
 
     #tutoral rectangle ----------------------------------------------------------------------
     tutorialrect = pygame.Surface((240, 200))
-    tutorialrect.set_alpha(120)
+    tutorialrect.set_alpha(0)
     tutorialrect.fill((255,255,255))
     win.blit(tutorialrect, (340, 490))
     #pygame.display.update()
 
     #credits rectangle ----------------------------------------------------------------------
     creditsrect = pygame.Surface((200, 180))
-    creditsrect.set_alpha(120)
+    creditsrect.set_alpha(0)
     creditsrect.fill((255,255,255))
     win.blit(creditsrect, (800, 380))
     creditsrect.get_clip()
@@ -49,38 +49,25 @@ def menulook():
     
     #practice rectangle ----------------------------------------------------------------------
     practicerect = pygame.Surface((260, 180))
-    practicerect.set_alpha(120)
+    practicerect.set_alpha(0)
     practicerect.fill((255,255,255))
     win.blit(practicerect, (880, 125))
     pygame.display.update()
     
     
     pygame.display.update()
-    return (win, playrect, tutorialrect, creditsrect, practicerect)  
+    #return (win, playrect, tutorialrect, creditsrect, practicerect)  
 
     #create all button rectangles: play, tutorial, credits, practice
 
 ()   
 
 
-
-
-def clicked(click, rect):
-
-    p1 = rect.topleft
-    p2 = rect.bottomright
-    #0=x, 1=y
-    return p1[1] > point[0] > p2[0] and p1[1] > point[1] > p2[2]
-
-() 
-
-
 def activemenu(): 
 
-    tab, prect, trect, crect, pracrect = menulook()
+    menulook()
 
     pointx, pointy = pygame.mouse.get_pos()
-    press = pygame.mouse.get_pressed()
     
      #run until closed
     running = True 
@@ -96,21 +83,24 @@ def activemenu():
                 #play button
                 if  (235 < pointx < (235 + 230)) and (210 < pointy < (210+ 240)):
                     print("you're playing!!")
+                    play = True
                 
                 #tutorial
                 if (340 < pointx < (240 + 340)) and (490 < pointy < (200 + 490)):
-
                     print("time for tutorial!")
+                    tutorial = True
 
                 #credits
                 if (800 < pointx < (800 + 200)) and (380 < pointy < (380 + 180)):
-
                     print("all miz")
-                
+                    credit = True
+
                 #practice
                 if (880 < pointx < (880 + 260)) and (125 < pointy < (125 + 180)):
-
                     print("practice makes perfect")
+                    practice = True
+
+    return play, tutorial, credit, practice
 
 
 

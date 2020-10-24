@@ -16,7 +16,7 @@ pygame.display.update()
 
 #print(x.bottomleft[0])
 x, y = pygame.mouse.get_pos()
-print(x)
+p
     #run until closed
 running = True 
 while running: 
