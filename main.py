@@ -1,5 +1,5 @@
 
-import pygame, menu, instructions, player, enemy
+import pygame, menu, instructions, player, enemy, level
 
 # Initialize pygame
 pygame.init()
@@ -7,6 +7,8 @@ pygame.init()
 # Create the screen
 screen = pygame.display.set_mode((1200, 800))
 
+# Levels
+nightLevel = level.Level('NightScene.png', 733)
 
 # Caption and Icon
 pygame.display.set_caption("Art Heist")
@@ -15,7 +17,7 @@ pygame.display.set_icon(icon)
 
 
 greenNinja = player.Player('GreenNinjaCharacter.png')
-enemyNinja = enemy.Enemy('NinjaCharacter.png')
+enemyNinja = enemy.Enemy('NinjaCharacter.png', 400, nightLevel.groundLevel - 135)
 
 #play_button, tutorial_button, credit_button, practice_button = menu.activemenu()
 
@@ -39,23 +41,23 @@ while running:
         running = menuRunner.running
 
     if instructionRunner.running == False: 
-        tutorial_button = False;
+        tutorial_button = False
         instructionRunner.running = True
        
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         greenNinja.movement(event)
-        enemyNinja.movement()
+        
 
         
     if play_button == True:   
+        enemyNinja.movement()
         # RGB (Red, Green, Blue)
-        nightscene = pygame.image.load("NightScene.png")
-        screen.blit(nightscene, (0,0))
+        nightLevel.displayBackground(screen)
 
         #screen.fill((254, 254, 254))
-        greenNinja.boundaries(screen)
+        greenNinja.boundaries(screen, nightLevel.groundLevel)
         enemyNinja.boundaries(screen)
     
     elif tutorial_button == True: 

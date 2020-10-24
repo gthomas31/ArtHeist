@@ -3,11 +3,11 @@ import pygame
 class Enemy:
 
     # Initialize enemy
-    def __init__(self, enemyImg):
+    def __init__(self, enemyImg, startingX, startingY):
         self.enemyImg = enemyImg
         self.enemyPic = pygame.image.load(enemyImg)
-        self.enemyX = 400
-        self.enemyY = 400
+        self.enemyX = startingX
+        self.enemyY = startingY
         self.enemyX_change = 0.5
         self.enemyY_change = 0
 
