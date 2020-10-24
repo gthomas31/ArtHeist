@@ -15,21 +15,7 @@ class Player:
     def player(self, x, y, screen):
         screen.blit(self.playerPic, (x, y))
 
-    # Keystroke functions
-    def movement(self, event, screen):
-
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                self.playerX_change = -2
-                print("Left arrow")
-            if event.key == pygame.K_RIGHT:
-                self.playerX_change = 2
-                print("Right arrow")
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                self.playerX_change = 0
-                print("Released")
-
+    def boundaries(self, screen):
         self.playerX += self.playerX_change      
 
         if self.playerX <= 0:
@@ -44,3 +30,18 @@ class Player:
 
         self.player(self.playerX, self.playerY, screen)
         pygame.display.update()
+
+    # Keystroke functions
+    def movement(self, event):
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                self.playerX_change = -2
+                print("Left arrow")
+            if event.key == pygame.K_RIGHT:
+                self.playerX_change = 2
+                print("Right arrow")
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                self.playerX_change = 0
+                print("Released")
