@@ -17,7 +17,7 @@ pygame.display.set_icon(icon)
 
 
 greenNinja = player.Player('GreenNinjaCharacter.png')
-enemyNinja = enemy.Enemy('NinjaCharacter.png', 400, nightLevel.groundLevel - 135)
+enemyNinja = enemy.Enemy('enemyCharacter.png', 400, nightLevel.groundLevel - 135)
 
 #play_button, tutorial_button, credit_button, practice_button = menu.activemenu()
 
