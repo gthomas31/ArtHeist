@@ -4,8 +4,15 @@ class Level:
     
     platformList = []
 
-    def __init__(self, imgFile):
+    def __init__(self, imgFile, groundLevel):
         self.background = imgFile
+        self.backgroundImage = pygame.image.load(self.background)
+        self.groundLevel = groundLevel
+
+    def displayBackground(self, win):
+        win.blit(self.backgroundImage, (0, 0))
+        for platform in self.platformList:
+           platform.createSurface(win)
 
     def addPlatform(self, platform, win):
         win.blit(platform.surface, (platform.xCord, platform.yCord))
@@ -50,9 +57,10 @@ class Platform:
         self.ySize = ySize
         self.surface = pygame.Surface((xSize, ySize))
         
+        
     def createSurface(self, win):
         self.surface.set_alpha(120) # make 0 for invisible
-        self.surface.fill(255, 255, 255)
+        self.surface.fill((255, 255, 255))
         self.displaySurface(win)
 
     def displaySurface(self, win):
