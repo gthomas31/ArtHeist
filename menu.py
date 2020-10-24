@@ -92,26 +92,27 @@ def activemenu():
             elif event.type == pygame.MOUSEBUTTONDOWN:
     
                 pointx, pointy = pygame.mouse.get_pos()
-    
+                
+                #play button
                 if  (235 < pointx < (235 + 230)) and (210 < pointy < (210+ 240)):
                     print("you're playing!!")
-
-            #tutorial button
-            elif event.type == pygame.MOUSEBUTTONDOWN:
                 
-                pointx, pointy = pygame.mouse.get_pos()
-
+                #tutorial
                 if (340 < pointx < (240 + 340)) and (490 < pointy < (200 + 490)):
+
                     print("time for tutorial!")
 
-            #credits button
-            #elif event.type == pygame.MOUSEBUTTONDOWN and p1[1] > point[0] > p2[0] and p1[1] > point[1] > p2[2]:
-                #print("ramiz did everything.")
-            
-            #practice button
-            #elif even.type  == pygame.MOUSEBUTTONDOWN and p1[1] > point[0] > p2[0] and p1[1] > point[1] > p2[2]:
-                #print("practice makes perfect")
-               
+                #credits
+                if (800 < pointx < (800 + 200)) and (380 < pointy < (380 + 180)):
+
+                    print("all miz")
+                
+                #practice
+                if (880 < pointx < (880 + 260)) and (125 < pointy < (125 + 180)):
+
+                    print("practice makes perfect")
+
+
 
 
 ()
