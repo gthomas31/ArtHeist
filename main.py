@@ -49,33 +49,34 @@ while running:
         # Checks keystroke for left or right
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_change = -2
+                playerX_change = -3
             if event.key == pygame.K_RIGHT:
-                playerX_change = 2
+                playerX_change = 3
+            playerX += playerX_change
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
+            playerX += playerX_change
 
         playerX += playerX_change
 
-    # Boundaries for both characters
-    if playerX <= 0:
-        playerX = 0
-    elif playerX >= 1140:
-        playerX = 1140
+        # Boundaries for both characters
+        if playerX <= 0:
+            playerX = 0
+        elif playerX >= 1140:
+            playerX = 1140
 
-    if playerY <= 0:
-        playerY = 0
-    elif playerY >= 680:
-        playerY = 680 
+        if playerY <= 0:
+            playerY = 0
+        elif playerY >= 680:
+            playerY = 680 
 
-    if enemyX <= 0:
-        enemyX = 0
-    elif enemyX >= 1140:
-        enemyX = 1140
+        if enemyX <= 0:
+            enemyX = 0
+        elif enemyX >= 1140:
+            enemyX = 1140
 
-    if enemyY <= 0:
-        enemyY = 0
-    elif enemyY >= 680:
-        playerY = 680              
- 
+        if enemyY <= 0:
+            enemyY = 0
+        elif enemyY >= 680:
+            playerY = 680
