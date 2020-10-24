@@ -5,6 +5,9 @@ class Level:
     def __init__(self, imgFile):
         self.img = imgFile
 
+    def addPlatform(self, platform, win):
+        win.blit(platform.surface, (platform.xCord, platform.yCord))
+
 class Platform:
 
     def __init__(self, x, y, xSize, ySize):
@@ -17,7 +20,6 @@ class Platform:
     def createSurface(self, win):
         self.surface.set_alpha(120)
         self.surface.fill(255, 255, 255)
-        win.blit(self.surface, (self.xCord, self.yCord))
         
 
 
