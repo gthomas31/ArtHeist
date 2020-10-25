@@ -1,8 +1,7 @@
-import pygame
+import pygame, menu
 pygame.init()
 
-
-def Instructions():
+def Instructions(runner):
 
     #Rgb color that will be user later in the code for the text and anything else
     yellow = (255, 255, 0)
@@ -75,13 +74,10 @@ def Instructions():
     pygame.display.update()
 
     #Makes sure that the window doesn't close without something happening
-    running = True 
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            runner.changeRunning()
 
-Instructions()
 
 
 

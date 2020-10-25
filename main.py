@@ -1,5 +1,5 @@
 
-import pygame, menu, instructions, player, enemy, level
+import pygame, menu, instructions, player, enemy, level, Score 
 
 # Initialize pygame
 pygame.init()
@@ -23,6 +23,7 @@ enemyNinja = enemy.Enemy('enemyCharacter.png', 400, nightLevel.groundLevel - 135
 
 #play_button, tutorial_button, credit_button, practice_button = menu.activemenu()
 
+
 # Running class
 menuRunner = menu.Running()
 instructionRunner = menu.Running()
@@ -35,7 +36,6 @@ practice_button = False
 # Game Loop
 running = True
 while running:
-
 
     
     if play_button == False and tutorial_button == False and credit_button == False and practice_button == False:
@@ -50,13 +50,15 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         greenNinja.movement(event)
-        
 
         
     if play_button == True:   
         enemyNinja.movement()
         # RGB (Red, Green, Blue)
         nightLevel.displayBackground(screen)
+
+        #Creates score 
+        Score.score(screen,10)
 
         #screen.fill((254, 254, 254))
         greenNinja.boundaries(screen, nightLevel)
@@ -65,7 +67,7 @@ while running:
     elif tutorial_button == True: 
         instructions.Instructions(instructionRunner)
 
-
+        
 
 
         
