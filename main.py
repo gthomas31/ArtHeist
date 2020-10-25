@@ -37,6 +37,36 @@ painting2 = painting.Painting('Painting.png', 1020, 250 - 51, screen)
 darkMuseum.addPainting(painting2, screen)
 enemyNinjaTwo = enemy.Enemy('enemyCharacter.png', 440, 316 - 120, 435, 830)
 
+#Level Three
+levelthree = level.Level("LevelThree.png", 690)
+platform8 = level.Platform(219, 565, 160, 30)
+platform9 = level.Platform(871, 560, 161, 30)
+platform10 = level.Platform(782, 457, 69, 31)
+platform11 = level.Platform(542, 373, 167, 34)
+platform12 = level.Platform(298, 351, 82, 53)
+platform13 = level.Platform(6, 246, 240, 29)
+platform14 = level.Platform(361, 175, 68, 25)
+platform15 = level.Platform(537, 121, 168, 29)
+platform16 = level.Platform(797, 178, 61, 33)
+platform17 = level.Platform(963, 243, 227, 30)
+
+levelthree.addPlatform(platform8, screen)
+levelthree.addPlatform(platform9, screen)
+levelthree.addPlatform(platform10, screen)
+levelthree.addPlatform(platform11, screen)
+levelthree.addPlatform(platform12, screen)
+levelthree.addPlatform(platform13, screen)
+levelthree.addPlatform(platform14, screen)
+levelthree.addPlatform(platform15, screen)
+levelthree.addPlatform(platform16, screen)
+levelthree.addPlatform(platform17, screen)
+
+painting3 = painting.Painting("Painting.png", 1060, 243 - 51, screen)
+levelthree.addPainting(painting3, screen)
+enemyNinjaThree = enemy.Enemy('enemyCharacter.png', 993, 243 - 120, 990, 1140)
+enemyNinjaFour = enemy.Enemy('enemyCharacter.png', 23, 246 - 120, 18, 205)
+enemyNinjaFive = enemy.Enemy('enemyCharacter.png', 551, 371 - 120, 550, 670)
+# enemyNinjaSix = enemy.Enemy('enemyCharacter.png', 400, levelthree.groundLevel - 120, 390, 860)
 
 # Caption and Icon
 pygame.display.set_caption("Art Heist")
@@ -99,6 +129,7 @@ while running:
             #screen.fill((254, 254, 254))
             ninja.boundaries(screen, nightLevel)
             enemyNinja.boundaries(screen)
+            pygame.display.update()
             for painting in nightLevel.paintingList:
                 if (painting.collision(ninja)):
                     nightLevel.removePaintings()
@@ -118,14 +149,38 @@ while running:
             for painting in darkMuseum.paintingList:
                 if (painting.collision(ninja)):
                     darkMuseum.removePaintings()
-                    nightLevel.removePlatforms()
+                    darkMuseum.removePlatforms()
                     score.currentScore += 1
                     ninja.level = 3
                     enemyNinjaTwo.kill()
                     pygame.display.update()
         
         elif ninja.level == 3:
-            print("level 3")
+            levelthree.displayBackground(screen)
+            score.score(screen, score.currentScore)
+            ninja.boundaries(screen, levelthree)
+            enemyNinjaThree.movement(ninja)
+            enemyNinjaThree.boundaries(screen)
+            enemyNinjaFour.movement(ninja)
+            enemyNinjaFour.boundaries(screen)
+            enemyNinjaFive.movement(ninja)
+            enemyNinjaFive.boundaries(screen)
+            pygame.display.update()
+            # enemyNinjaSix.movement(ninja)
+            # enemyNinjaSix.boundaries(screen)
+            for painting in levelthree.paintingList:
+                if (painting.collision(ninja)):
+                    levelthree.removePaintings()
+                    levelthree.removePlatforms()
+                    score.currentScore += 1
+                    ninja.level = 4
+                    enemyNinjaThree.kill()
+                    enemyNinjaFour.kill()
+                    enemyNinjaFive.kill()
+                    # enemyNinjaSix.kill()
+                    pygame.display.update()
+        if ninja.level == 4:
+            print("Congrats!")
 
            
         

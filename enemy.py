@@ -41,7 +41,6 @@ class Enemy:
             self.enemyY = 680
 
         self.enemy(self.enemyX, self.enemyY, screen)
-        pygame.display.update()
 
     def movement(self, player):
 
