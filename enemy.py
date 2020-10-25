@@ -3,7 +3,7 @@ import pygame, player
 class Enemy:
 
     # Initialize enemy
-    def __init__(self, enemyImg, startingX, startingY):
+    def __init__(self, enemyImg, startingX, startingY, leftBound, rightBound):
         self.enemyImg = enemyImg
         self.enemyPic = pygame.image.load(enemyImg)
         self.enemyX = startingX
@@ -12,22 +12,24 @@ class Enemy:
         self.enemyY_change = 0
         self.xenemyboxsize = 55
         self.yenemyboxsize = 95
+        self.leftBoundary = leftBound
+        self.rightBoundary = rightBound
         self.enemybox = pygame.Surface((self.xenemyboxsize, self.yenemyboxsize))
 
     # Player definition
     def enemy(self, x, y, screen):
         screen.blit(self.enemyPic, (x, y))
-        self.enemybox.set_alpha(100)
+        self.enemybox.set_alpha(0)
         self.enemybox.fill((0, 0, 100))
         screen.blit(self.enemybox, (x + 3, y + 20))
 
     def boundaries(self, screen):
         self.enemyX += self.enemyX_change
 
-        if self.enemyX <= 700:
-            self.enemyX = 700
-        elif self.enemyX >= 1100:
-            self.enemyX = 1100
+        if self.enemyX <= self.leftBoundary:
+            self.enemyX = self.leftBoundary
+        elif self.enemyX >= self.rightBoundary:
+            self.enemyX = self.rightBoundary
 
         if self.enemyY <= 0:
             self.enemyY = 0
@@ -40,9 +42,9 @@ class Enemy:
     def movement(self, player):
 
         # Enemy movement
-        if self.enemyX == 1100:
+        if self.enemyX == self.rightBoundary:
             self.enemyX_change = -0.5
-        if self.enemyX == 700:
+        if self.enemyX == self.leftBoundary:
             self.enemyX_change = 0.5
         self.collision(player)
     

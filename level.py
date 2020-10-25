@@ -3,6 +3,7 @@ import pygame
 class Level:
     
     platformList = []
+    paintingList = []
 
     def __init__(self, imgFile, groundLevel):
         self.background = imgFile
@@ -13,13 +14,21 @@ class Level:
         win.blit(self.backgroundImage, (0, 0))
         for platform in self.platformList:
            platform.createSurface(win)
+        for painting in self.paintingList:
+            painting.createPainting(win)
 
     def addPlatform(self, platform, win):
-        win.blit(platform.surface, (platform.xCord, platform.yCord))
+        # win.blit(platform.surface, (platform.xCord, platform.yCord))
         self.platformList.append(platform)
+
+    def addPainting(self, painting, win):
+        self.paintingList.append(painting)
 
     def removePlatforms(self):
         self.platformList = []
+
+    def removePaintings(self):
+        self.paintingList = []
 
     def findTop(self, index):
         # x1, x2, y
@@ -59,7 +68,7 @@ class Platform:
         
         
     def createSurface(self, win):
-        self.surface.set_alpha(120) # make 0 for invisible
+        self.surface.set_alpha(0) # make 0 for invisible
         self.surface.fill((255, 255, 255))
         self.displaySurface(win)
 

@@ -6,8 +6,8 @@ class Player:
     def __init__(self, playerImg):
         self.playerImg = playerImg
         self.playerPic = pygame.image.load(playerImg)
-        self.playerX = 600
-        self.playerY = 400
+        self.playerX = 100
+        self.playerY = 600
         self.playerX_change = 0
         self.playerY_change = 0
         self.playerHeight = 120
@@ -24,7 +24,7 @@ class Player:
     # Player definition
     def player(self, x, y, screen):
         screen.blit(self.playerPic, (x, y))
-        self.playerbox.set_alpha(100)
+        self.playerbox.set_alpha(0)
         self.playerbox.fill((255, 255, 255))
         screen.blit(self.playerbox, (x + 5, y + 20))
 
