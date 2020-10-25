@@ -16,6 +16,7 @@ class Player:
         self.yboxsize = 92
         self.playerbox = pygame.Surface((self.xboxsize, self.yboxsize))
 
+
     def changeImageFile(self, playerImg):
         self.playerImg = playerImg
         self.playerPic = pygame.image.load(playerImg)
@@ -43,6 +44,10 @@ class Player:
         elif self.playerY >= 680:
             self.playerY = 680
         
+<<<<<<< HEAD
+        #print(self.playerX)
+        #print(self.playerY)
+=======
         hitboxLeft = self.playerX + 5
         hitboxTop = self.playerY + 20
         hitboxRight = hitboxLeft + self.xboxsize
@@ -51,6 +56,7 @@ class Player:
         print(self.playerX)
         print(self.playerY)
         
+>>>>>>> bf7519619a0c91fe9f22712dec22630bc43f0a94
         for index in range(len(level.platformList)):
             x1, x2, y1 = level.findTop(index)
             x1, x2, y2 = level.findBottom(index)
@@ -128,4 +134,4 @@ class Player:
 
         if self.playerY >= groundLevel - self.playerHeight and self.playerY_change > 0:
             self.playerY_change = 0
-            
+    

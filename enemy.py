@@ -1,4 +1,4 @@
-import pygame
+import pygame, player
 
 class Enemy:
 
@@ -37,10 +37,72 @@ class Enemy:
         self.enemy(self.enemyX, self.enemyY, screen)
         pygame.display.update()
 
-    def movement(self):
+    def movement(self, player):
 
         # Enemy movement
         if self.enemyX == 1100:
             self.enemyX_change = -0.5
         if self.enemyX == 700:
             self.enemyX_change = 0.5
+        self.collision(player)
+    
+    def collision(self, player):
+
+        #player values------------------------
+
+        #top left values
+        pxhitbox = player.playerX + 5
+        pyhitbox = player.playerY + 20
+
+        #size
+        pxhitboxsize = player.xboxsize
+        pyhitboxsize = player.yboxsize
+
+        #bottom right values
+        pnewx = pxhitbox + pxhitboxsize
+        pnewy = pyhitbox + pyhitboxsize
+
+
+        #enemy values --------------------------
+
+        #top left values
+        exhitbox = self.enemyX + 3
+        eyhitbox = self.enemyY + 20
+
+        #size
+        exhitboxsize = self.xenemyboxsize
+        eyhitboxsize = self.yenemyboxsize
+
+        #bottom right values 
+        enewx = exhitboxsize + exhitbox
+        enewy = eyhitbox + eyhitboxsize
+
+        if (exhitbox < pxhitbox < enewx) and (eyhitbox < pyhitbox < enewy): 
+        #if (player.playerX + 50 < self.enemyX < player.playerX + 100): 
+            player.playerX = 100
+            player.playerY = 600
+        if (exhitbox < pnewx < enewx) and (eyhitbox < pyhitbox < enewy):
+            player.playerX = 100
+            player.playerY = 600
+        if (exhitbox < pnewx < enewx) and (eyhitbox < pnewy < enewy):
+            player.playerX = 100
+            player.playerY = 600
+        if (exhitbox < pxhitbox < enewx) and (eyhitbox < pnewy < enewy): 
+            player.playerX = 100
+            player.playerY = 600
+        
+
+
+        
+
+    
+    #player top left corner check enemy top right
+    #player top right corner check enemy top left
+    #player bottom left check enemy top left]
+    #player bottom right check enemy top right
+    #----------------------------------------------------
+    #player midpoint of left side check enemy top right
+    #player midpoint of right check enemy top left 
+    #
+
+    #y value of the top left and x value of bottom right = top right
