@@ -43,9 +43,38 @@ class Player:
         elif self.playerY >= 680:
             self.playerY = 680
         
+        hitboxLeft = self.playerX + 5
+        hitboxTop = self.playerY + 20
+        hitboxRight = hitboxLeft + self.xboxsize
+        hitboxBottom = hitboxTop + self.yboxsize
+
         print(self.playerX)
         print(self.playerY)
+        
         for index in range(len(level.platformList)):
+            x1, x2, y1 = level.findTop(index)
+            x1, x2, y2 = level.findBottom(index)
+            middleY = (y2 - y1) / 2
+            middleX = (x2 - x1) / 2
+            if hitboxBottom > y1 and hitboxBottom < y2 + middleY:
+                if (x1 - self.xboxsize + 5 < hitboxLeft < x2 - 5):
+                    self.playerY = y1 - self.yboxsize - 20
+                    self.currentGroundLevel = y1
+                    self.playerY_change = 0
+            x1, y1, y2 = level.findLeftSide(index)
+            x2, y1, y2 = level.findRightSide(index)
+            side = "right"
+            if (hitboxLeft < x1 and hitboxRight < x2):
+                side = "left"
+            else:
+                side = "right"
+            if (hitboxRight >= x1 - 1 and hitboxRight < x2):
+                if not ((hitboxTop <= y1 + 5 and hitboxBottom <= y1 + 5) or (hitboxTop >= y2 and hitboxBottom >= y2)):
+                    self.playerX = x1 - self.xboxsize - 5
+            elif (hitboxLeft <= x2 - 1 and hitboxRight > x1):
+                if not ((hitboxTop <= y1 + 5 and hitboxBottom <= y1 + 5) or (hitboxTop >= y2 and hitboxBottom >= y2)):
+                    self.playerX = x2
+        '''for index in range(len(level.platformList)):
             x1, x2, y1 = level.findTop(index)
             x1, x2, y2 = level.findBottom(index)
             if (self.playerY + 75 > y1 and self.playerY + 75 < y2):
@@ -66,7 +95,7 @@ class Player:
                         self.playerX = x2
                     else:
                         self.playerX = x1 - 50
-                    self.playerX_change = 0
+                    self.playerX_change = 0'''
 
         self.player(self.playerX, self.playerY, screen)
         # pygame.display.update()
