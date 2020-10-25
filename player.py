@@ -44,19 +44,14 @@ class Player:
         elif self.playerY >= 680:
             self.playerY = 680
         
-<<<<<<< HEAD
-        #print(self.playerX)
-        #print(self.playerY)
-=======
         hitboxLeft = self.playerX + 5
         hitboxTop = self.playerY + 20
         hitboxRight = hitboxLeft + self.xboxsize
         hitboxBottom = hitboxTop + self.yboxsize
 
-        print(self.playerX)
-        print(self.playerY)
+        # print(self.playerX)
+        # print(self.playerY)
         
->>>>>>> bf7519619a0c91fe9f22712dec22630bc43f0a94
         for index in range(len(level.platformList)):
             x1, x2, y1 = level.findTop(index)
             x1, x2, y2 = level.findBottom(index)
