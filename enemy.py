@@ -1,9 +1,9 @@
-import pygame, player
+import pygame, player, score
 
 class Enemy:
 
     # Initialize enemy
-    def __init__(self, enemyImg, startingX, startingY, leftBound, rightBound):
+    def __init__(self, enemyImg, startingX, startingY, leftBound, rightBound, scores):
         self.enemyImg = enemyImg
         self.enemyPic = pygame.image.load(enemyImg)
         self.enemyX = startingX
@@ -16,6 +16,7 @@ class Enemy:
         self.rightBoundary = rightBound
         self.enemybox = pygame.Surface((self.xenemyboxsize, self.yenemyboxsize))
         self.alive = True
+        self.scores = scores
 
     # Player definition
     def enemy(self, x, y, screen):
@@ -86,15 +87,20 @@ class Enemy:
             #if (player.playerX + 50 < self.enemyX < player.playerX + 100): 
                 player.playerX = 100
                 player.playerY = 600
-            if (exhitbox < pnewx < enewx) and (eyhitbox < pyhitbox < enewy):
+                self.scores.fails += 1
+                
+            elif (exhitbox < pnewx < enewx) and (eyhitbox < pyhitbox < enewy):
                 player.playerX = 100
                 player.playerY = 600
-            if (exhitbox < pnewx < enewx) and (eyhitbox < pnewy < enewy):
+                self.scores.fails += 1
+            elif (exhitbox < pnewx < enewx) and (eyhitbox < pnewy < enewy):
                 player.playerX = 100
                 player.playerY = 600
-            if (exhitbox < pxhitbox < enewx) and (eyhitbox < pnewy < enewy): 
+                self.scores.fails += 1
+            elif (exhitbox < pxhitbox < enewx) and (eyhitbox < pnewy < enewy): 
                 player.playerX = 100
                 player.playerY = 600
+                self.scores.fails += 1
         
 
 

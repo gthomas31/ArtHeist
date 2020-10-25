@@ -75,7 +75,7 @@ class Platform:
         
         
     def createSurface(self, win):
-        self.surface.set_alpha(100) # make 0 for invisible
+        self.surface.set_alpha(0) # make 0 for invisible
         self.surface.fill((255, 255, 255))
         self.displaySurface(win)
 

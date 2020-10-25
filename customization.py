@@ -92,7 +92,7 @@ def custom(runner):
             #size of eaach character (60, 120)
             #red ninja
             if (100 < pointx < (100+charx)) and (100 < pointy < (100+chary)):
-                print("you picked red")
+                #print("you picked red")
                 red = True
                 pink = False
                 lb = False
@@ -104,7 +104,7 @@ def custom(runner):
             
             #pink ninja 
             elif (100 < pointx < (100 + charx)) and (250 < pointy < (250+chary)):
-                print("you picked pink")
+                #print("you picked pink")
                 red = False
                 pink = True
                 lb = False
@@ -115,7 +115,7 @@ def custom(runner):
 
             #lightblue ninja
             elif (300 < pointx < (300+charx)) and (100 < pointy < (100+chary)):
-                print("you picked light blue") 
+                #print("you picked light blue") 
                 red = False
                 pink = False
                 lb = True
@@ -126,7 +126,7 @@ def custom(runner):
 
             #blue ninja
             elif (300 < pointx < (300+charx)) and (250 < pointy < (250+chary)): 
-                print("you picked blue")
+                #print("you picked blue")
                 red = False
                 pink = False
                 lb = False
@@ -137,7 +137,7 @@ def custom(runner):
 
             #green ninja
             elif (200 < pointx < (200+charx)) and (175 < pointy < (175+chary)):
-                print("you chose green")
+                #print("you chose green")
                 red = False
                 pink = False
                 lb = False
@@ -145,5 +145,4 @@ def custom(runner):
                 green = True   
                 runner.running = False  
                 colorfile = "GreenNewNinja.png"        
-    print(colorfile)
     return colorfile

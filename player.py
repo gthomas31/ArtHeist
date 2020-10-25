@@ -107,20 +107,20 @@ class Player:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 self.playerX_change = -2
-                print("Left arrow")
+                #print("Left arrow")
             if event.key == pygame.K_RIGHT:
                 self.playerX_change = 2
-                print("Right arrow")
+                #print("Right arrow")
             if event.key == pygame.K_SPACE:
-                print("Space")
-                print(self.playerY_change)
+                #print("Space")
+                #print(self.playerY_change)
                 if self.playerY_change == 0:
                     self.playerY_change = -2.5
-                    print("Up arrow")
+                    #print("Up arrow")
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 self.playerX_change = 0
-                print("Released")
+                #sprint("Released")
 
     def gravity(self, groundLevel):
         if self.playerY_change == 0:

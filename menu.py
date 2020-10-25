@@ -96,7 +96,7 @@ def activemenu(runningClass):
             
             #play button
             if  (235 < pointx < (235 + 230)) and (210 < pointy < (210+ 240)):
-                print("youre playing")
+                #print("youre playing")
                 play = True
                 tutorial = False
                 credit = False
@@ -104,7 +104,7 @@ def activemenu(runningClass):
             
             #tutorial
             elif (340 < pointx < (240 + 340)) and (490 < pointy < (200 + 490)):
-                print("time for tutorial!")
+                #print("time for tutorial!")
                 play = False
                 tutorial = True
                 credit = False
@@ -112,7 +112,7 @@ def activemenu(runningClass):
 
             #credits
             elif (800 < pointx < (800 + 200)) and (380 < pointy < (380 + 180)):
-                print("all miz")
+                #print("all miz")
                 play = False
                 tutorial = False
                 credit = True
@@ -120,7 +120,7 @@ def activemenu(runningClass):
 
             #colorcustomization
             elif (880 < pointx < (880 + 260)) and (125 < pointy < (125 + 180)):
-                print("you want to customize")
+                #print("you want to customize")
                 play = False
                 tutorial = False
                 credit = False

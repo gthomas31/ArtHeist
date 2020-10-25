@@ -1,5 +1,5 @@
 
-import pygame, menu, instructions, player, enemy, level, customization, score, painting, time
+import pygame, menu, instructions, player, enemy, level, customization, score, painting, time, credits
 
 # Initialize pygame
 pygame.init()
@@ -8,7 +8,7 @@ pygame.init()
 screen = pygame.display.set_mode((1200, 800))
 
 # Score
-score = score.ScoreCounter(0)
+score = score.ScoreCounter(0, 0)
 
 # Night Level
 nightLevel = level.Level('NightScene.png', 733)
@@ -16,7 +16,7 @@ platform1 = level.Platform(1028, 522, 142, 29)
 platform2 = level.Platform(885, 622, 134, 29)
 nightLevel.addPlatform(platform1, screen)
 nightLevel.addPlatform(platform2, screen)
-enemyNinja = enemy.Enemy('enemyCharacter.png', 200, nightLevel.groundLevel - 120, 400, 800)
+enemyNinja = enemy.Enemy('enemyCharacter.png', 200, nightLevel.groundLevel - 120, 400, 800, score)
 painting1 = painting.Painting('Painting.png', 1081, 522 - 51, screen)
 nightLevel.addPainting(painting1, screen)
 
@@ -35,7 +35,7 @@ darkMuseum.addPlatform(platform6, screen)
 darkMuseum.addPlatform(platform7, screen)
 painting2 = painting.Painting('Painting.png', 1020, 250 - 51, screen)
 darkMuseum.addPainting(painting2, screen)
-enemyNinjaTwo = enemy.Enemy('enemyCharacter.png', 440, 316 - 120, 435, 830)
+enemyNinjaTwo = enemy.Enemy('enemyCharacter.png', 440, 316 - 120, 435, 830, score)
 
 #Level Three
 levelthree = level.Level("LevelThree.png", 690)
@@ -63,9 +63,9 @@ levelthree.addPlatform(platform17, screen)
 
 painting3 = painting.Painting("Painting.png", 1060, 243 - 51, screen)
 levelthree.addPainting(painting3, screen)
-enemyNinjaThree = enemy.Enemy('enemyCharacter.png', 993, 243 - 120, 990, 1140)
-enemyNinjaFour = enemy.Enemy('enemyCharacter.png', 23, 246 - 120, 18, 205)
-enemyNinjaFive = enemy.Enemy('enemyCharacter.png', 551, 371 - 120, 550, 670)
+enemyNinjaThree = enemy.Enemy('enemyCharacter.png', 993, 243 - 120, 990, 1140, score)
+enemyNinjaFour = enemy.Enemy('enemyCharacter.png', 23, 246 - 120, 18, 205, score)
+enemyNinjaFive = enemy.Enemy('enemyCharacter.png', 551, 371 - 120, 550, 670, score)
 # enemyNinjaSix = enemy.Enemy('enemyCharacter.png', 400, levelthree.groundLevel - 120, 390, 860)
 
 # Caption and Icon
@@ -83,6 +83,7 @@ ninja = player.Player('GreenNewNinja.png')
 menuRunner = menu.Running()
 instructionRunner = menu.Running()
 customizationRunner = menu.Running()
+creditsRunner = menu.Running()
 
 play_button = False
 tutorial_button = False
@@ -112,6 +113,10 @@ while running:
     if customizationRunner.running == False: 
         custom_button = False
         customizationRunner.running = True
+
+    if creditsRunner.running == False:
+        credit_button = False
+        creditsRunner.running = True
        
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -180,10 +185,9 @@ while running:
                     # enemyNinjaSix.kill()
                     pygame.display.update()
         if ninja.level == 4:
-            print("Congrats!")
-
-           
-        
+            congrats = pygame.image.load("Congrats.png")
+            screen.blit(congrats, (0, 0)) 
+            pygame.display.update()             
     
     elif tutorial_button == True: 
         instructions.Instructions(instructionRunner)
@@ -191,6 +195,11 @@ while running:
     elif custom_button == True: 
         filecolor = customization.custom(customizationRunner)
         ninja.changeImageFile(filecolor)
+
+    elif credit_button == True: 
+        credits.credits(creditsRunner)
+
+
         
 
 
