@@ -92,7 +92,7 @@ while running:
         
     
     elif tutorial_button == True: 
-        instructions.Instructions(instructionRunner)
+        Instructions.Instructions(instructionRunner)
 
     elif custom_button == True: 
         filecolor = customization.custom(customizationRunner)
