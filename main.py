@@ -1,5 +1,5 @@
 
-import pygame, menu, instructions, player, enemy, level, customization, score, painting
+import pygame, menu, instructions, player, enemy, level, customization, score, painting, time
 
 # Initialize pygame
 pygame.init()
@@ -21,7 +21,22 @@ painting1 = painting.Painting('Painting.png', 1081, 522 - 51, screen)
 nightLevel.addPainting(painting1, screen)
 
 # Museum Entrance
-# entranceLevel = level.Level(, )
+darkMuseum = level.Level2(700)
+platform3 = level.Platform(257, 595, 110, 31)
+darkMuseum.addPlatform(platform3, screen)
+
+platform4 = level.Platform(78, 500, 108, 35)
+platform5 = level.Platform(266, 411, 108, 34)
+platform6 = level.Platform(430, 316, 440, 35)
+platform7 = level.Platform(965, 248, 153, 34)
+darkMuseum.addPlatform(platform4, screen)
+darkMuseum.addPlatform(platform5, screen)
+darkMuseum.addPlatform(platform6, screen)
+darkMuseum.addPlatform(platform7, screen)
+painting2 = painting.Painting('Painting.png', 1020, 250 - 51, screen)
+darkMuseum.addPainting(painting2, screen)
+enemyNinjaTwo = enemy.Enemy('enemyCharacter.png', 440, 316 - 120, 435, 830)
+
 
 # Caption and Icon
 pygame.display.set_caption("Art Heist")
@@ -29,7 +44,7 @@ icon = pygame.image.load('AHLogo.png')
 pygame.display.set_icon(icon)
 
 
-greenNinja = player.Player('GreenNewNinja.png')
+ninja = player.Player('GreenNewNinja.png')
 
 
 #play_button, tutorial_button, credit_button, practice_button = menu.activemenu()
@@ -71,32 +86,56 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        greenNinja.movement(event)
+        ninja.movement(event)
         
 
         
     if play_button == True:
-        if score.currentScore == 0:
-            enemyNinja.movement(greenNinja)
+        if ninja.level == 1:
+            enemyNinja.movement(ninja)
             # RGB (Red, Green, Blue)
             nightLevel.displayBackground(screen)
             score.score(screen, score.currentScore)
             #screen.fill((254, 254, 254))
-            greenNinja.boundaries(screen, nightLevel)
+            ninja.boundaries(screen, nightLevel)
             enemyNinja.boundaries(screen)
             for painting in nightLevel.paintingList:
-                if (painting.collision(greenNinja)):
+                if (painting.collision(ninja)):
+                    nightLevel.removePaintings()
+                    nightLevel.removePlatforms()
                     score.currentScore += 1
-        elif score.currentScore == 1:
-            print("Level 2")
+                    ninja.level = 2
+                    enemyNinja.kill()
+                    pygame.display.update()
+
+        elif (ninja.level == 2):
+            darkMuseum.displayBackground(screen)
+            score.score(screen, score.currentScore)
+            ninja.boundaries(screen, darkMuseum)
+            enemyNinjaTwo.movement(ninja)
+            enemyNinjaTwo.boundaries(screen)
+            pygame.display.update()
+            for painting in darkMuseum.paintingList:
+                if (painting.collision(ninja)):
+                    darkMuseum.removePaintings()
+                    nightLevel.removePlatforms()
+                    score.currentScore += 1
+                    ninja.level = 3
+                    enemyNinjaTwo.kill()
+                    pygame.display.update()
+        
+        elif ninja.level == 3:
+            print("level 3")
+
+           
         
     
     elif tutorial_button == True: 
-        Instructions.Instructions(instructionRunner)
+        instructions.Instructions(instructionRunner)
 
     elif custom_button == True: 
         filecolor = customization.custom(customizationRunner)
-        greenNinja.changeImageFile(filecolor)
+        ninja.changeImageFile(filecolor)
         
 
 

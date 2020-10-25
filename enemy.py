@@ -15,6 +15,7 @@ class Enemy:
         self.leftBoundary = leftBound
         self.rightBoundary = rightBound
         self.enemybox = pygame.Surface((self.xenemyboxsize, self.yenemyboxsize))
+        self.alive = True
 
     # Player definition
     def enemy(self, x, y, screen):
@@ -22,6 +23,9 @@ class Enemy:
         self.enemybox.set_alpha(0)
         self.enemybox.fill((0, 0, 100))
         screen.blit(self.enemybox, (x + 3, y + 20))
+    
+    def kill(self):
+        self.alive = False
 
     def boundaries(self, screen):
         self.enemyX += self.enemyX_change
@@ -49,49 +53,49 @@ class Enemy:
         self.collision(player)
     
     def collision(self, player):
+        if (self.alive):
+            #player values------------------------
 
-        #player values------------------------
+            #top left values
+            pxhitbox = player.playerX + 5
+            pyhitbox = player.playerY + 20
 
-        #top left values
-        pxhitbox = player.playerX + 5
-        pyhitbox = player.playerY + 20
+            #size
+            pxhitboxsize = player.xboxsize
+            pyhitboxsize = player.yboxsize
 
-        #size
-        pxhitboxsize = player.xboxsize
-        pyhitboxsize = player.yboxsize
-
-        #bottom right values
-        pnewx = pxhitbox + pxhitboxsize
-        pnewy = pyhitbox + pyhitboxsize
+            #bottom right values
+            pnewx = pxhitbox + pxhitboxsize
+            pnewy = pyhitbox + pyhitboxsize
 
 
-        #enemy values --------------------------
+            #enemy values --------------------------
 
-        #top left values
-        exhitbox = self.enemyX + 3
-        eyhitbox = self.enemyY + 20
+            #top left values
+            exhitbox = self.enemyX + 3
+            eyhitbox = self.enemyY + 20
 
-        #size
-        exhitboxsize = self.xenemyboxsize
-        eyhitboxsize = self.yenemyboxsize
+            #size
+            exhitboxsize = self.xenemyboxsize
+            eyhitboxsize = self.yenemyboxsize
 
-        #bottom right values 
-        enewx = exhitboxsize + exhitbox
-        enewy = eyhitbox + eyhitboxsize
+            #bottom right values 
+            enewx = exhitboxsize + exhitbox
+            enewy = eyhitbox + eyhitboxsize
 
-        if (exhitbox < pxhitbox < enewx) and (eyhitbox < pyhitbox < enewy): 
-        #if (player.playerX + 50 < self.enemyX < player.playerX + 100): 
-            player.playerX = 100
-            player.playerY = 600
-        if (exhitbox < pnewx < enewx) and (eyhitbox < pyhitbox < enewy):
-            player.playerX = 100
-            player.playerY = 600
-        if (exhitbox < pnewx < enewx) and (eyhitbox < pnewy < enewy):
-            player.playerX = 100
-            player.playerY = 600
-        if (exhitbox < pxhitbox < enewx) and (eyhitbox < pnewy < enewy): 
-            player.playerX = 100
-            player.playerY = 600
+            if (exhitbox < pxhitbox < enewx) and (eyhitbox < pyhitbox < enewy): 
+            #if (player.playerX + 50 < self.enemyX < player.playerX + 100): 
+                player.playerX = 100
+                player.playerY = 600
+            if (exhitbox < pnewx < enewx) and (eyhitbox < pyhitbox < enewy):
+                player.playerX = 100
+                player.playerY = 600
+            if (exhitbox < pnewx < enewx) and (eyhitbox < pnewy < enewy):
+                player.playerX = 100
+                player.playerY = 600
+            if (exhitbox < pxhitbox < enewx) and (eyhitbox < pnewy < enewy): 
+                player.playerX = 100
+                player.playerY = 600
         
 
 

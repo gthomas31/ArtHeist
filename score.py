@@ -7,7 +7,6 @@ class ScoreCounter:
         self.currentScore = counter
 
     def score(self, screen, counter):
-        count = counter
         white = (255,255,255)
         score_font = pygame.font.SysFont('Comic Sans MS', 24, bold = True, italic=True)
         Score_Line = "Paintings Stolen:  " + str(self.currentScore)

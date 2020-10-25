@@ -15,6 +15,7 @@ class Player:
         self.xboxsize = 55
         self.yboxsize = 92
         self.playerbox = pygame.Surface((self.xboxsize, self.yboxsize))
+        self.level = 1
 
 
     def changeImageFile(self, playerImg):

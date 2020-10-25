@@ -1,14 +1,13 @@
 import pygame
 
 class Level:
-    
-    platformList = []
-    paintingList = []
 
     def __init__(self, imgFile, groundLevel):
         self.background = imgFile
         self.backgroundImage = pygame.image.load(self.background)
         self.groundLevel = groundLevel
+        self.platformList = []
+        self.paintingList = []
 
     def displayBackground(self, win):
         win.blit(self.backgroundImage, (0, 0))
@@ -17,9 +16,17 @@ class Level:
         for painting in self.paintingList:
             painting.createPainting(win)
 
+    def changeBackgroundImage(self, img, screen):
+        self.backgroundImage = pygame.image.load(img)
+        screen.blit(self.backgroundImage, (0,0))
+
     def addPlatform(self, platform, win):
         # win.blit(platform.surface, (platform.xCord, platform.yCord))
         self.platformList.append(platform)
+
+    def clearScreen(self, win):
+        self.backgroundImage = pygame.image.load('WhiteScreen.png')
+        self.displayBackground(win)
 
     def addPainting(self, painting, win):
         self.paintingList.append(painting)
@@ -68,12 +75,15 @@ class Platform:
         
         
     def createSurface(self, win):
-        self.surface.set_alpha(0) # make 0 for invisible
+        self.surface.set_alpha(100) # make 0 for invisible
         self.surface.fill((255, 255, 255))
         self.displaySurface(win)
 
     def displaySurface(self, win):
         win.blit(self.surface, (self.xCord, self.yCord))
         
+class Level2(Level):
 
+    def __init__(self, groundLevel):
+        super().__init__('LevelTwo.png', groundLevel)
 
