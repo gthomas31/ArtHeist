@@ -10,10 +10,16 @@ class Enemy:
         self.enemyY = startingY
         self.enemyX_change = 0.5
         self.enemyY_change = 0
+        self.xenemyboxsize = 55
+        self.yenemyboxsize = 95
+        self.enemybox = pygame.Surface((self.xenemyboxsize, self.yenemyboxsize))
 
     # Player definition
     def enemy(self, x, y, screen):
         screen.blit(self.enemyPic, (x, y))
+        self.enemybox.set_alpha(100)
+        self.enemybox.fill((0, 0, 100))
+        screen.blit(self.enemybox, (x + 3, y + 20))
 
     def boundaries(self, screen):
         self.enemyX += self.enemyX_change
