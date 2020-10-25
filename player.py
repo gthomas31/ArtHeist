@@ -37,12 +37,14 @@ class Player:
         elif self.playerY >= 680:
             self.playerY = 680
         
+        print(self.playerX)
+        print(self.playerY)
         for index in range(len(level.platformList)):
             x1, x2, y1 = level.findTop(index)
             x1, x2, y2 = level.findBottom(index)
-            if (self.playerY + 90 > y1 and self.playerY + 90 < y2):
+            if (self.playerY + 75 > y1 and self.playerY + 75 < y2):
                 if (x1 < self.playerX + 30 < x2):
-                    self.playerY = y1 - 90
+                    self.playerY = y1 - 75
                     self.currentGroundLevel = y1
                     self.playerY_change = 0
             x1, y1, y2 = level.findLeftSide(index)
@@ -52,8 +54,8 @@ class Player:
                 side = "left"
             else:
                 side = "right"
-            if (self.playerX > x1 - 50 and self.playerX < x2):
-                if (y2 < self.playerY + 90 and y1 > self.playerY - 90):
+            if (self.playerX > x1 - 60 and self.playerX < x2 - 2):
+                if (y2 < self.playerY + 75 and y1 > self.playerY):
                     if (side == "right"):
                         self.playerX = x2
                     else:
