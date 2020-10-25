@@ -3,7 +3,7 @@ import pygame, player, score
 class Enemy:
 
     # Initialize enemy
-    def __init__(self, enemyImg, startingX, startingY, leftBound, rightBound, scores):
+    def __init__(self, enemyImg, startingX, startingY, leftBound, rightBound, scores, speed):
         self.enemyImg = enemyImg
         self.enemyPic = pygame.image.load(enemyImg)
         self.enemyX = startingX
@@ -17,6 +17,7 @@ class Enemy:
         self.enemybox = pygame.Surface((self.xenemyboxsize, self.yenemyboxsize))
         self.alive = True
         self.scores = scores
+        self.speed = speed
 
     # Player definition
     def enemy(self, x, y, screen):
@@ -47,9 +48,9 @@ class Enemy:
 
         # Enemy movement
         if self.enemyX == self.rightBoundary:
-            self.enemyX_change = -0.5
+            self.enemyX_change = -self.speed
         if self.enemyX == self.leftBoundary:
-            self.enemyX_change = 0.5
+            self.enemyX_change = self.speed
         self.collision(player)
     
     def collision(self, player):

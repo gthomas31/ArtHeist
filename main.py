@@ -19,7 +19,7 @@ platform1 = level.Platform(1028, 522, 142, 29)
 platform2 = level.Platform(885, 622, 134, 29)
 nightLevel.addPlatform(platform1, screen)
 nightLevel.addPlatform(platform2, screen)
-enemyNinja = enemy.Enemy('enemyCharacter.png', 200, nightLevel.groundLevel - 120, 400, 800, score)
+enemyNinja = enemy.Enemy('enemyCharacter.png', 200, nightLevel.groundLevel - 120, 400, 800, score, 0.5)
 painting1 = painting.Painting('Painting.png', 1081, 522 - 51, screen)
 nightLevel.addPainting(painting1, screen)
 
@@ -38,7 +38,7 @@ darkMuseum.addPlatform(platform6, screen)
 darkMuseum.addPlatform(platform7, screen)
 painting2 = painting.Painting('Painting.png', 1020, 250 - 51, screen)
 darkMuseum.addPainting(painting2, screen)
-enemyNinjaTwo = enemy.Enemy('enemyCharacter.png', 440, 316 - 120, 435, 830, score)
+enemyNinjaTwo = enemy.Enemy('enemyCharacter.png', 440, 316 - 120, 435, 830, score, 1.0)
 
 #Level Three
 levelthree = level.Level("LevelThree.png", 690)
@@ -66,9 +66,9 @@ levelthree.addPlatform(platform17, screen)
 
 painting3 = painting.Painting("Painting.png", 1060, 243 - 51, screen)
 levelthree.addPainting(painting3, screen)
-enemyNinjaThree = enemy.Enemy('enemyCharacter.png', 993, 243 - 120, 990, 1140, score)
-enemyNinjaFour = enemy.Enemy('enemyCharacter.png', 23, 246 - 120, 18, 205, score)
-enemyNinjaFive = enemy.Enemy('enemyCharacter.png', 551, 371 - 120, 550, 670, score)
+enemyNinjaThree = enemy.Enemy('enemyCharacter.png', 993, 243 - 120, 990, 1140, score, .75)
+enemyNinjaFour = enemy.Enemy('enemyCharacter.png', 23, 246 - 120, 18, 205, score, .75)
+enemyNinjaFive = enemy.Enemy('enemyCharacter.png', 551, 371 - 120, 550, 670, score, .75)
 # enemyNinjaSix = enemy.Enemy('enemyCharacter.png', 400, levelthree.groundLevel - 120, 390, 860)
 
 # Caption and Icon
