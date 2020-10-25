@@ -1,6 +1,7 @@
 
 import pygame, menu, instructions, player, enemy, level, customization, score, painting, time, credits
 
+
 # Initialize pygame
 pygame.init()
 
@@ -9,6 +10,8 @@ screen = pygame.display.set_mode((1200, 800))
 
 # Score
 score = score.ScoreCounter(0, 0)
+beginningTime = 0
+endTime = 0
 
 # Night Level
 nightLevel = level.Level('NightScene.png', 733)
@@ -126,6 +129,8 @@ while running:
 
         
     if play_button == True:
+        if beginningTime == 0:
+            beginningTime = time.time()
         if ninja.level == 1:
             enemyNinja.movement(ninja)
             # RGB (Red, Green, Blue)
@@ -185,9 +190,29 @@ while running:
                     # enemyNinjaSix.kill()
                     pygame.display.update()
         if ninja.level == 4:
+            if endTime == 0:
+                endTime = time.time()
+                totalTime = endTime - beginningTime
+                print(totalTime)
+                minutes = int(totalTime // 60)
+                seconds = int(totalTime % 60)
+                if (minutes < 10):
+                    timeString = "0"
+                else:
+                    timeString = ""
+                if (seconds < 10):
+                    secondsString = "0" + str(seconds)
+                else:
+                    secondString = str(seconds)
+                timeString += str(minutes) + ":" + secondString
             congrats = pygame.image.load("Congrats.png")
+            font = pygame.font.SysFont('Comic Sans MS', 32, bold = True)
+
+            timeDisplay = font.render("Time: " + timeString, 2, (0, 0, 0))
             screen.blit(congrats, (0, 0)) 
-            pygame.display.update()             
+            screen.blit(timeDisplay, (10,720))
+            pygame.display.update()
+            #running = False             
     
     elif tutorial_button == True: 
         instructions.Instructions(instructionRunner)
