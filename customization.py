@@ -69,6 +69,7 @@ def custom(runner):
     charx = 60
     chary = 120
 
+    #dont think this is doing anything
     red = False
     pink = False
     lb = False

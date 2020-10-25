@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((1200, 800))
 
 # Levels
 nightLevel = level.Level('NightScene.png', 733)
-platform1 = level.Platform(400, 550, 200, 50)
+platform1 = level.Platform(400, 650, 100, 25)
 nightLevel.addPlatform(platform1, screen)
 
 # Caption and Icon
@@ -18,7 +18,7 @@ icon = pygame.image.load('AHLogo.png')
 pygame.display.set_icon(icon)
 
 
-greenNinja = player.Player('GreenNinjaCharacter.png')
+greenNinja = player.Player('GreenNewNinja.png')
 enemyNinja = enemy.Enemy('enemyCharacter.png', 400, nightLevel.groundLevel - 135)
 
 #play_button, tutorial_button, credit_button, practice_button = menu.activemenu()
