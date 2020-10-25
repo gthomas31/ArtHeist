@@ -9,7 +9,7 @@ def score(screen, Number):
         score_font = pygame.font.SysFont('Comic Sans MS', 24, bold = True, italic=True)
         Score_Line = "Paintings Stolen:  "
         painting = pygame.image.load("Painting.png")
-        screen.blit(painting, (420,590))
+        screen.blit(painting, (445,490))
         Score_display = score_font.render(Score_Line, 2, white)
         screen.blit(Score_display, (950,10))
 
