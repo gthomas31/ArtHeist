@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((1200, 800))
 
 # Levels
 nightLevel = level.Level('NightScene.png', 733)
-platform1 = level.Platform(400, 650, 100, 25)
+platform1 = level.Platform(400, 550, 150, 75)
 nightLevel.addPlatform(platform1, screen)
 
 # Caption and Icon
