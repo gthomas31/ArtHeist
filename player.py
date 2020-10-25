@@ -12,6 +12,9 @@ class Player:
         self.playerY_change = 0
         self.playerHeight = 120
         self.currentGroundLevel = 0
+        self.xboxsize = 55
+        self.yboxsize = 92
+        self.playerbox = pygame.Surface((self.xboxsize, self.yboxsize))
 
     def changeImageFile(self, playerImg):
         self.playerImg = playerImg
@@ -20,6 +23,9 @@ class Player:
     # Player definition
     def player(self, x, y, screen):
         screen.blit(self.playerPic, (x, y))
+        self.playerbox.set_alpha(100)
+        self.playerbox.fill((255, 255, 255))
+        screen.blit(self.playerbox, (x + 5, y + 20))
 
     def boundaries(self, screen, level):
         self.playerX += self.playerX_change     
