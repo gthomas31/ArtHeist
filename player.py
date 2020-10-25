@@ -61,13 +61,13 @@ class Player:
                     self.playerY = y1 - self.yboxsize - 20
                     self.currentGroundLevel = y1
                     self.playerY_change = 0
+            elif hitboxTop < y2 + 2 and hitboxTop > y2 - middleY:
+                if (x1 - self.xboxsize + 5 < hitboxLeft < x2 - 5):
+                    self.playerY = y2
+                    self.playerY_change = 0
+
             x1, y1, y2 = level.findLeftSide(index)
             x2, y1, y2 = level.findRightSide(index)
-            side = "right"
-            if (hitboxLeft < x1 and hitboxRight < x2):
-                side = "left"
-            else:
-                side = "right"
             if (hitboxRight >= x1 - 1 and hitboxRight < x2):
                 if not ((hitboxTop <= y1 + 5 and hitboxBottom <= y1 + 5) or (hitboxTop >= y2 and hitboxBottom >= y2)):
                     self.playerX = x1 - self.xboxsize - 5
