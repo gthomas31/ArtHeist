@@ -16,8 +16,9 @@ def Instructions(runner):
     #Font control for the output
     myfont = pygame.font.SysFont('Comic Sans MS', 20, bold = True)
     myfont_intro = pygame.font.SysFont('Comic Sans MS', 40, bold = True)
-    myfont_Line1 = pygame.font.SysFont('Comic Sans MS', 19, bold = True)
-    myfont_Line2 = pygame.font.SysFont('Comic Sans MS', 18, bold = True)
+
+    myfont_Line1 = pygame.font.SysFont('Comic Sans MS', 17, bold = True)
+    myfont_Line2 = pygame.font.SysFont('Comic Sans MS', 16, bold = True)
     myfont_Line3 = pygame.font.SysFont('Comic Sans MS', 17, bold = True)
 
     background = pygame.image.load("InstructionsTest.png")
@@ -29,15 +30,19 @@ def Instructions(runner):
 
 
     #Text Lines
-    Line1 = "You were sent by the mafia to steal a painting"
-    Line2 = "or else they kill your wife and kids." 
-    Line5 = "Your goal is to avoid the gaurds"
-    Line6 = "parkour on platforms in order to reach the painting."
-    Line3 = "Each painting you steal will increase your" 
-    Line4 = "reward from the mafia"
+    Line1 = "During the day you spend your time at art exhibits."
+    Line2 = "During the night you also spend time at art exhibits." 
+
+    Line3 = "However, at night you become the Art Ninja Thief!"
+    Line4 = "Use your elite ninja skills to steal prized art pieces."
+    
+    
+    Line5 = "The more paintings you collect, the greater your " 
+    Line6 = "collection becomes." 
+    Line7 = "Be warned! The guards are ruthless!" 
 
     #Directions Text
-    Directions1 = "Up Key = jump" 
+    Directions1 = "SPACE = jump" 
     Directions2  = "Right key = move forward"
     Directions3 = "Left key = backward"
 
@@ -50,6 +55,7 @@ def Instructions(runner):
 
     Intro5 = myfont_Line3.render(Line5,2, white)
     Intro6 = myfont_Line3.render(Line6,2, white)
+    Intro7 = myfont_Line3.render(Line7,2,white)
 
     #Renders the directions
     Display1 = myfont.render(Directions1,10, Blue)
@@ -57,14 +63,16 @@ def Instructions(runner):
     Display3 = myfont.render(Directions3, 10, Blue)
 
     #Displays the the window being built in the window with the Y-coordinates changing 
-    window.blit(Intro,(35, 110))
-    window.blit(Intro2,(35, 140))
+    window.blit(Intro,(37, 110))
+    window.blit(Intro2,(37, 140))\
 
-    window.blit(Intro3,(35, 180))
-    window.blit(Intro4,(35, 210))
+    window.blit(Intro5,(40, 250))
+    window.blit(Intro6,(200, 280))
 
-    window.blit(Intro5,(35, 250))
-    window.blit(Intro6,(35, 280))
+    window.blit(Intro3,(40, 180))
+    window.blit(Intro4,(40, 210))
+
+    window.blit(Intro7, (172, 310))
 
     window.blit(Display1,(140, 370))
     window.blit(Display2,(140, 400))
@@ -77,8 +85,3 @@ def Instructions(runner):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             runner.changeRunning()
-
-
-
-
-
