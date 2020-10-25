@@ -33,6 +33,7 @@ tutorial_button = False
 credit_button = False
 custom_button = False
 
+#dont think this is doing anything
 red = False
 pink = False
 lb = False
@@ -76,7 +77,8 @@ while running:
         instructions.Instructions(instructionRunner)
 
     elif custom_button == True: 
-        customization.custom(customizationRunner)
+        filecolor = customization.custom(customizationRunner)
+        greenNinja.changeImageFile(filecolor)
         
 
 

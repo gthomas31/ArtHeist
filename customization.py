@@ -47,20 +47,20 @@ def custom(runner):
 
     #----------------------------------------------------------------
 
-    red = pygame.image.load("RedNewNinja.png")
-    window.blit(red, (100, 100))
+    redcolor = pygame.image.load("RedNewNinja.png")
+    window.blit(redcolor, (100, 100))
 
-    pink = pygame.image.load("PinkNewNinja.png")
-    window.blit(pink, (100, 250))
+    pinkcolor = pygame.image.load("PinkNewNinja.png")
+    window.blit(pinkcolor, (100, 250))
 
-    lightblue = pygame.image.load("TurqNewNinja.png")
-    window.blit(lightblue, (300, 100))
+    lightbluecolor = pygame.image.load("TurqNewNinja.png")
+    window.blit(lightbluecolor, (300, 100))
 
-    blue = pygame.image.load("BlueNewNinja.png")
-    window.blit(blue, (300, 250))
+    bluecolor = pygame.image.load("BlueNewNinja.png")
+    window.blit(bluecolor, (300, 250))
 
-    green = pygame.image.load("GreenNewNinja.png")
-    window.blit(green, (200, 175))
+    greencolor = pygame.image.load("GreenNewNinja.png")
+    window.blit(greencolor, (200, 175))
 
 
 
@@ -74,6 +74,12 @@ def custom(runner):
     lb = False
     blue = False
     green = False
+
+    #image names 
+    
+    #default character
+    colorfile = "GreenNewNinja.png"
+
 
     #while runner.running == True:
     for event in pygame.event.get():
@@ -92,6 +98,8 @@ def custom(runner):
                 blue = False
                 green = False
                 runner.running = False
+                colorfile = "RedNewNinja.png"
+
             
             #pink ninja 
             elif (100 < pointx < (100 + charx)) and (250 < pointy < (250+chary)):
@@ -102,6 +110,7 @@ def custom(runner):
                 blue = False
                 green = False
                 runner.running = False
+                colorfile = "PinkNewNinja.png"
 
             #lightblue ninja
             elif (300 < pointx < (300+charx)) and (100 < pointy < (100+chary)):
@@ -112,6 +121,7 @@ def custom(runner):
                 blue = False
                 green = False 
                 runner.running = False
+                colorfile = "TurqNewNinja.png"
 
             #blue ninja
             elif (300 < pointx < (300+charx)) and (250 < pointy < (250+chary)): 
@@ -122,6 +132,7 @@ def custom(runner):
                 blue = True
                 green = False
                 runner.running = False
+                colorfile = "BlueNewNinja.png"
 
             #green ninja
             elif (200 < pointx < (200+charx)) and (175 < pointy < (175+chary)):
@@ -131,6 +142,7 @@ def custom(runner):
                 lb = False
                 blue = False
                 green = True   
-                runner.running = False          
-
-    return red, pink, lb, blue, green
+                runner.running = False  
+                colorfile = "GreenNewNinja.png"        
+    print(colorfile)
+    return colorfile
