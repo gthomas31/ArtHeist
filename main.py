@@ -19,7 +19,7 @@ pygame.display.set_icon(icon)
 
 
 greenNinja = player.Player('GreenNewNinja.png')
-enemyNinja = enemy.Enemy('enemyCharacter.png', 400, nightLevel.groundLevel - 135)
+enemyNinja = enemy.Enemy('enemyCharacter.png', 400, nightLevel.groundLevel - 120)
 
 #play_button, tutorial_button, credit_button, practice_button = menu.activemenu()
 
@@ -65,13 +65,14 @@ while running:
 
         
     if play_button == True:   
-        enemyNinja.movement()
+        enemyNinja.movement(greenNinja)
         # RGB (Red, Green, Blue)
         nightLevel.displayBackground(screen)
 
         #screen.fill((254, 254, 254))
         greenNinja.boundaries(screen, nightLevel)
         enemyNinja.boundaries(screen)
+        
     
     elif tutorial_button == True: 
         instructions.Instructions(instructionRunner)
